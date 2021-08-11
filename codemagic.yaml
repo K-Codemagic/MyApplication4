@@ -1,0 +1,34 @@
+workflows:
+    native-android:
+        name: Native Android
+        instance_type: mac_mini
+        environment: 
+            node: latest
+            xcode: 12.2
+        triggering:
+            events:
+                - push
+                - tag
+                - pull_request
+            branch_patterns:
+                - pattern: develop
+                  include: true
+                  source: true
+        scripts:
+            - name: Set Android SDK location
+              script:
+                echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/local.properties"
+            - name: Build Android production release
+              script: |
+                chmod +x ./gradlew
+                ./gradlew --version
+                ./gradlew assembleRelease    
+        artifacts:
+            - app/build/outputs/**/*.apk
+        publishing:
+            email:
+                recipients:
+                    - kalgi@nevercode.io
+                notify:
+                  success: true
+                  failure: false
