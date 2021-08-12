@@ -4,7 +4,7 @@ workflows:
         instance_type: mac_mini
         environment:
             vars:
-                JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home"
+                java:11
             node: latest
             xcode: 12.2
         triggering:
