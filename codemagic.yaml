@@ -2,7 +2,9 @@ workflows:
     native-android:
         name: Native Android
         instance_type: mac_mini
-        environment: 
+        environment:
+            vars:
+            JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home"
             node: latest
             xcode: 12.2
         triggering:
