@@ -3,8 +3,9 @@ workflows:
         name: Native Android
         instance_type: mac_mini
         environment:
+            vars:
+               java: 11
             node: latest
-            java: 11
             xcode: 12.2
         triggering:
             events:
