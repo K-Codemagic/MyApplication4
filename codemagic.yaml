@@ -26,8 +26,8 @@ workflows:
                 ./gradlew assembleRelease
                 ./gradlew bundleRelease
         artifacts:
-            - app/build/outputs/**/*.apk
-            - app/build/outputs/**/*.aab
+            - app/build/outputs/apk/**/*.apk
+            - app/build/outputs/bundle/**/*.aab
         publishing:
             email:
                 recipients:
