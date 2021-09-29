@@ -21,12 +21,18 @@ android {
 			minifyEnabled false
 			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 		}
-		// add the code from below line.
-		applicationVariants.all { variant ->
-    variant.outputs.all {
-        outputFileName = "${applicationName}_${variant.buildType.name}_${defaultConfig.versionName}.apk"
-    }
- }		
+		//rename apk for all sub projects
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty("android")) {
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${project.name}-${variant.name}-${variant.versionName}.apk"
+                }
+            }
+        }
+
+	}	
 }
 
 
