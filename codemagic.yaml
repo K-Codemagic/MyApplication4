@@ -22,9 +22,7 @@ workflows:
             - name: Build Android production release
               script: |
                 chmod +x ./gradlew
-                ./gradlew --version
                 ./gradlew assembleRelease
-                ./gradlew bundleRelease
         artifacts:
             - app/build/outputs/apk/**/*.apk
             - app/build/outputs/bundle/**/*.aab
