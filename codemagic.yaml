@@ -24,7 +24,7 @@ workflows:
                 set -e
                 set -x
                 chmod +x ./gradlew
-                ./gradlew assembleRelease
+                ./gradlew assembleDebug
         artifacts:
             - app/build/outputs/apk/**/*.apk
             - app/build/outputs/bundle/**/*.aab
