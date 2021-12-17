@@ -22,16 +22,13 @@ android {
             signingConfig signingConfigs.release
             useProguard false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-	    archivesBaseName = "release-${versionName}"
         }
 
         debug {
-            minifyEnabled false
-            signingConfig signingConfigs.debug
-            useProguard false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-	    archivesBaseName = "Debug-${versionName}"
+            defaultConfig {
+                debuggable true
 
+                versionNameSuffix "-DEBUG"
         }
     }
 }
