@@ -18,29 +18,18 @@ android {
     
         buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            archivesBaseName = "my_product_name_release_v" + appVersionName
         }
         debug {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            archivesBaseName = "my_product_name_dev_v" + appVersionName
         }
     }
-
-    applicationVariants.all { variant ->
-    variant.outputs.all {
-        def appName = "My_nice_name_"
-        def buildType = variant.buildType.name
-        def newName
-        if (buildType == 'debug'){
-            newName = "${appName}${defaultConfig.versionName}_dbg.apk"
-        } else {
-            newName = "${appName}${defaultConfig.versionName}_prd.apk"
-        }
-        outputFileName = newName
-    }
-  }  
 }
-
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.6.0'
