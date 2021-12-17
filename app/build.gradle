@@ -27,21 +27,18 @@ android {
     }
 
     applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            def project = "myProject"
-            def SEP = "_"
-            def buildType = variant.variantData.variantConfiguration.buildType.name
-            def version = variant.versionName
-            def date = new Date();
-            def formattedDate = date.format('ddMMyy_HHmm')
-
-            def newApkName = project + SEP + buildType + SEP + version + SEP + formattedDate + ".apk"
-
-            outputFileName = new File(newApkName)
+    variant.outputs.all {
+        def appName = "My_nice_name_"
+        def buildType = variant.variantData.variantConfiguration.buildType.name
+        def newName
+        if (buildType == 'debug'){
+            newName = "${appName}${defaultConfig.versionName}_dbg.apk"
+        } else {
+            newName = "${appName}${defaultConfig.versionName}_prd.apk"
         }
+        outputFileName = newName
     }
 }
-
 
 dependencies {
 
