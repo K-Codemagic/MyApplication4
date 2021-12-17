@@ -29,7 +29,7 @@ android {
     applicationVariants.all { variant ->
     variant.outputs.all {
         def appName = "My_nice_name_"
-        def buildType = variant.variantData.variantConfiguration.buildType.name
+        def buildType = variant.buildType.name
         def newName
         if (buildType == 'debug'){
             newName = "${appName}${defaultConfig.versionName}_dbg.apk"
