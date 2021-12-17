@@ -38,6 +38,7 @@ android {
         }
         outputFileName = newName
     }
+  }  
 }
 
 dependencies {
