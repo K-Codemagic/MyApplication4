@@ -19,14 +19,19 @@ android {
         buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
-            archivesBaseName = "my_product_name_release_v" + appVersionName
+            signingConfig signingConfigs.release
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+	    archivesBaseName = "release-${versionName}"
         }
+
         debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            archivesBaseName = "my_product_name_dev_v" + appVersionName
+            signingConfig signingConfigs.debug
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+	    archivesBaseName = "Debug-${versionName}"
+
         }
     }
 }
