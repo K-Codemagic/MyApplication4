@@ -27,8 +27,6 @@ workflows:
 
         - |
 
-          #!/bin/bash/
-
           brew install maven
 
           echo "check installed maven version"
@@ -42,9 +40,6 @@ workflows:
           ignore_failure: true
 
         - |
-
-          #!/bin/bash/
-
           brew install selenium-server
                 
         artifacts:
