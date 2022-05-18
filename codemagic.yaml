@@ -16,15 +16,36 @@ workflows:
                   include: true
                   source: true
         scripts:
-            - name: Set Android SDK location
-              script:
-                echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/local.properties"
-            - name: Build Android production release
-              script: |
-                set -e
-                set -x
-                chmod +x ./gradlew
-                ./gradlew assembleDebug
+
+        - echo "single line script"
+
+        - name: Maven Install
+
+          script: maven install
+
+          ignore_failure: true
+
+        - |
+
+          #!/bin/bash/
+
+          brew install maven
+
+          echo "check installed maven version"
+
+          mvn -v
+
+        - name: Install Selenium
+
+          script: install selenium
+
+          ignore_failure: true
+
+        - |
+
+          #!/bin/bash/
+
+          brew install selenium-server
                 
         artifacts:
             - app/build/outputs/apk/**/*.apk
